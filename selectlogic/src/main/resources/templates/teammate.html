@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
  
@@ -16,14 +15,10 @@
           th:href="@{css/guru.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-<div class="container">
-    <div class="jumbotron">
-       
-       <h1>Hello</h1>
- 
-        <h2>Welcome to Anagha Krithik</h2>
-    </div>
-</div>
- 
+<h2 th:text="${teammate.firstName} + ' ' + ${teammate.lastName}" />
+
+<h3 th:text="'Plays ' + ${teammate.position}" />
+
+<div th:include="_links :: nav"/>
 </body>
 </html>
