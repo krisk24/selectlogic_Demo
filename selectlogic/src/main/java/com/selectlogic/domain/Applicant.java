@@ -10,6 +10,7 @@ public class Applicant {
 	@Id
 	@GeneratedValue
 	private Long id;
+
 	
 	private String name;
 	
@@ -59,8 +60,4 @@ public class Applicant {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	
-	
-	
-
 }

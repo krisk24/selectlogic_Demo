@@ -5,10 +5,13 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.selectlogic.domain.Team;
 import com.selectlogic.domain.Teammate;
+
 import com.selectlogic.repositories.TeamRepository;
 import com.selectlogic.repositories.TeammateRepository;
+
 
 @Service
 public class DatabaseLoader {
@@ -16,11 +19,14 @@ public class DatabaseLoader {
 	private final TeammateRepository teammateRepository;
 	private final TeamRepository teamRepository;
 	
+	
+	
 	@Autowired
 	public DatabaseLoader(TeammateRepository teammateRepository,
-	TeamRepository teamRepository) {
+	TeamRepository teamRepository ) {
 		this.teammateRepository = teammateRepository;
 		this.teamRepository = teamRepository;
+		
 	}
 	
 	@PostConstruct
@@ -45,6 +51,9 @@ public class DatabaseLoader {
 		phil.setPosition("pitcher");
 		phil.setTeam(springBootTeam2);
 		teammateRepository.save(phil);
+		
+		
+		
 	}
 	
 	

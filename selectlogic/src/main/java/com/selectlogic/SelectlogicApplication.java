@@ -15,11 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import com.selectlogic.domain.Teammate;
+import com.selectlogic.repositories.CustomerRepository;
 import com.selectlogic.repositories.TeammateRepository;
 
 
@@ -39,6 +37,9 @@ public class SelectlogicApplication {
     
     @Autowired
     TeammateRepository teammateRepository;
+    
+    @Autowired
+    CustomerRepository customerRepository;
     
     @PostConstruct
     void seeTheRoster() {

@@ -10,6 +10,14 @@
 
 	<name>selectlogic</name>
 	<description>selectlogic</description>
+	
+	<repositories>
+    <repository>
+        <id>Mysema Source</id>
+        <name>Mysema Source - Releases</name>
+        <url>http://source.mysema.com/maven2/releases</url>
+    </repository>
+	</repositories>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -22,6 +30,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<activiti.version>5.19.0</activiti.version>
+		<querydsl.version>3.7.0</querydsl.version> 
+		
 	</properties>
 
 	<dependencies>
@@ -48,6 +58,7 @@
 			<artifactId>activiti-spring-boot-starter-jpa</artifactId>
 			<version>${activiti.version}</version>
 		</dependency> -->
+		
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,6 +111,26 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
     	</dependency>
+    	
+   	
+    	<dependency>
+  			<groupId>com.mysema.querydsl</groupId>
+  			<artifactId>querydsl-apt</artifactId>
+  			<version>${querydsl.version}</version>
+  			<scope>provided</scope>
+		</dependency>    
+    
+		<dependency>
+ 			 <groupId>com.mysema.querydsl</groupId>
+  			<artifactId>querydsl-jpa</artifactId>
+  			<version>${querydsl.version}</version>
+		</dependency>
+
+		<dependency>
+ 			 <groupId>org.slf4j</groupId>
+  			 <artifactId>slf4j-log4j12</artifactId>
+  		</dependency>    
+    	
 	</dependencies>
 	
 	<build>
@@ -108,8 +139,38 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+			
+			<plugin>
+    			<groupId>com.mysema.maven</groupId>
+    			<artifactId>apt-maven-plugin</artifactId>
+    			<version>1.1.1</version>
+    			<executions>
+        			<execution>
+            			<goals>
+                			<goal>process</goal>
+            			</goals>
+            			<configuration>
+                			<outputDirectory>target/generated-sources/java</outputDirectory>
+                			<processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                			<logOnlyOnError>true</logOnlyOnError>
+           		 		</configuration>
+        			</execution>
+    			</executions>
+    			<dependencies>
+       		    	<dependency>
+            			<groupId>com.mysema.querydsl</groupId>
+            			<artifactId>querydsl-apt</artifactId>
+            			<version>${querydsl.version}</version>
+        			</dependency>
+        			<dependency>
+            			<groupId>com.mysema.querydsl</groupId>
+            			<artifactId>querydsl-jpa</artifactId>
+            			<classifier>apt</classifier>
+            			<version>${querydsl.version}</version>
+        			</dependency>
+    			</dependencies>
+			</plugin>
+    	</plugins> 
 	</build>
 	
-
 </project>
