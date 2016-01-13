@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
 
+	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    
 	<groupId>com.selectlogic</groupId>
 	<artifactId>selectlogic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -17,9 +20,10 @@
         <name>Mysema Source - Releases</name>
         <url>http://source.mysema.com/maven2/releases</url>
     </repository>
+  
 	</repositories>
-
-	<parent>
+	
+    <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.3.1.RELEASE</version>
@@ -31,6 +35,7 @@
 		<java.version>1.8</java.version>
 		<activiti.version>5.19.0</activiti.version>
 		<querydsl.version>3.7.0</querydsl.version> 
+		<apacheds.version>1.5.5</apacheds.version>
 		
 	</properties>
 
@@ -76,13 +81,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency> 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		
 		<dependency>
@@ -90,17 +97,20 @@
 			<artifactId>h2</artifactId>
 <!-- 			<scope>runtime</scope> -->
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		 <!--WebJars-->
  		<dependency>
  			<groupId>org.webjars</groupId>
  			<artifactId>bootstrap</artifactId>
  			<version>3.3.4</version>
  		</dependency>
+ 		
  		<dependency>
  			<groupId>org.webjars</groupId>
  			<artifactId>jquery</artifactId>
@@ -111,6 +121,19 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
     	</dependency>
+    	
+    	 <!-- LDAP Dependencies -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-ldap</artifactId>
+        </dependency>
+
+        <dependency>
+            <!-- Is the ApacheDS server - 1.5.6 and 1.5.7 don't work -->
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-server-jndi</artifactId>
+            <version>${apacheds.version}</version>
+        </dependency>
     	
    	
     	<dependency>
@@ -130,10 +153,12 @@
  			 <groupId>org.slf4j</groupId>
   			 <artifactId>slf4j-log4j12</artifactId>
   		</dependency>    
-    	
+  		
+  			
 	</dependencies>
 	
 	<build>
+	    
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -170,7 +195,10 @@
         			</dependency>
     			</dependencies>
 			</plugin>
+			
     	</plugins> 
 	</build>
+	
+	
 	
 </project>
